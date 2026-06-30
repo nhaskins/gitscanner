@@ -1,0 +1,21 @@
+# Cloned repositories may contain secrets or private data
+repos/*
+!repos/.gitkeep
+
+# Scan reports may contain sensitive finding details
+reports/*
+!reports/.gitkeep
+
+# Local environment overrides
+.env
+.env.local
+.env.*.local
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/extensions.json

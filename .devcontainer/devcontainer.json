@@ -1,0 +1,23 @@
+{
+  "name": "Git Repo Secret Scanner",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "GITLEAKS_VERSION": "8.30.1",
+      "TRUFFLEHOG_VERSION": "3.95.6"
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "vscode",
+  "postCreateCommand": "chmod +x /workspace/scripts/*.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": []
+    }
+  }
+}
