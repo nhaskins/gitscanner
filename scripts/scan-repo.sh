@@ -126,18 +126,21 @@ echo ""
 # `trufflehog git file://...` scans local git history.
 # `trufflehog filesystem` scans the current working tree.
 # --only-verified reduces noise by reporting only verified live secrets.
+# --no-update avoids auto-updater failures in container environments.
 echo "--- TruffleHog ---"
 set +e
 if [[ "${SCAN_MODE}" == "filesystem" ]]; then
   echo "Scanning working tree only (filesystem mode)."
   trufflehog filesystem "${ABS_REPO_PATH}" \
     --only-verified \
+    --no-update \
     --json > "${REPORT_DIR}/trufflehog.json" \
     2> "${REPORT_DIR}/trufflehog.log"
 else
   echo "Scanning full git history (file:// local path)."
   trufflehog git "file://${ABS_REPO_PATH}" \
     --only-verified \
+    --no-update \
     --json > "${REPORT_DIR}/trufflehog.json" \
     2> "${REPORT_DIR}/trufflehog.log"
 fi
